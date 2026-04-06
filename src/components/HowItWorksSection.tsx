@@ -65,7 +65,7 @@ export default function HowItWorksSection() {
           }}
         >
           <motion.div custom={0} variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
-            <span className="section-badge">How It Works</span>
+            <span className="section-badge">The Process</span>
           </motion.div>
 
           <motion.h2
@@ -83,9 +83,9 @@ export default function HowItWorksSection() {
               margin: '0 0 1.5rem',
             }}
           >
-            You imagine it.
+            You brief it.
             <br />
-            We shape it.
+            I make it make sense.
           </motion.h2>
 
           <motion.p
@@ -103,8 +103,8 @@ export default function HowItWorksSection() {
               margin: '0 auto',
             }}
           >
-            From concept to launch, our AI-guided process turns direction into a site
-            that feels polished, cinematic, and alive.
+            From vague brief to polished prototype, I bring structure to chaos —
+            which is ironic, given my reputation among friends.
           </motion.p>
         </div>
       </div>

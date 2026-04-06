@@ -5,30 +5,30 @@ import { Eye, Sparkles, Zap, Package } from 'lucide-react';
 const cards = [
   {
     icon: Eye,
-    title: 'Cinematic Visual Systems',
+    title: 'UX Research & Strategy',
     description:
-      'Immersive layouts, motion, and atmosphere that feel authored, not assembled. Every pixel placed with intent.',
+      'I dig into user needs, pain points, and behaviours before a single pixel moves. Understanding people first, designing second.',
     num: '01',
   },
   {
     icon: Sparkles,
-    title: 'AI-Led Creative Direction',
+    title: 'Visual & UI Design',
     description:
-      'We turn prompts, references, and brand signals into cohesive visual experiences that feel unmistakably yours.',
+      'Clean, considered interfaces that look as good as they work. Aesthetics in service of function — always.',
     num: '02',
   },
   {
     icon: Zap,
-    title: 'Fast Iteration',
+    title: 'Rapid Prototyping',
     description:
-      'Explore ambitious directions quickly without losing polish. Rapid cycles, high fidelity, always.',
+      'From wireframe to interactive prototype, fast. Ideas tested and refined before anyone loses patience with me.',
     num: '03',
   },
   {
     icon: Package,
-    title: 'Production-Ready Output',
+    title: 'Handoff-Ready Deliverables',
     description:
-      'Refined front-end builds designed for responsiveness, clarity, and launch. No handoff headaches.',
+      'Organised files, annotated specs, zero ambiguity. Your developers will actually enjoy working with what I hand over.',
     num: '04',
   },
 ];
@@ -96,7 +96,7 @@ export default function FeaturesSection() {
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <motion.div custom={0} variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
-            <span className="section-badge">Capabilities</span>
+            <span className="section-badge">What I Bring</span>
           </motion.div>
           <motion.h2
             custom={1}
@@ -113,9 +113,9 @@ export default function FeaturesSection() {
               margin: 0,
             }}
           >
-            Built with beauty
+            Good design is
             <br />
-            and performance in balance.
+            never an accident.
           </motion.h2>
         </div>
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
-const links = ['Services', 'Work', 'Process', 'Contact'];
+const links = ['Work', 'About', 'Process', 'Contact'];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -54,7 +54,7 @@ export default function Navbar() {
               letterSpacing: '-0.025em',
             }}
           >
-            Aether
+            rico.
           </span>
         </div>
 
@@ -109,7 +109,7 @@ export default function Navbar() {
               cursor: 'pointer',
             }}
           >
-            Get Started
+            Hire Me
             <ArrowUpRight style={{ width: '0.875rem', height: '0.875rem' }} />
           </a>
         </div>

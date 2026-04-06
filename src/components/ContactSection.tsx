@@ -87,9 +87,9 @@ export default function ContactSection() {
               maxWidth: '22rem',
             }}
           >
-            Scan the code to book a free strategy call, or reach out directly.
+            Scan to say hi, collab, or just tell me what you think.
             <br />
-            We respond within one business day.
+            I respond fast — it's one of my few redeeming qualities.
           </motion.p>
         </div>
 

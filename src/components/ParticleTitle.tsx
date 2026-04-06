@@ -65,7 +65,7 @@ export default function ParticleTitle() {
       oc.textAlign = 'center';
       oc.textBaseline = 'middle';
 
-      const lines = ['The Website Your Brand', 'Deserves'];
+      const lines = ['Chaos, but make', 'it UX.'];
       oc.fillText(lines[0], w / 2, H / 2 - leading * 0.5);
       oc.fillText(lines[1], w / 2, H / 2 + leading * 0.5);
 

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-const partners = ['Luminary', 'Celestia', 'Vaulted', 'Prism', 'Aura', 'Nocturne'];
+const partners = ['Figma', 'Framer', 'Notion', 'Maze', 'Miro', 'Lottie'];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -65,7 +65,7 @@ export default function IntroSection() {
         }}
       >
         <motion.div custom={0} variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
-          <span className="section-badge">Trusted by modern brands</span>
+          <span className="section-badge">Trusted by very patient people</span>
         </motion.div>
 
         <motion.h2
@@ -83,8 +83,8 @@ export default function IntroSection() {
             margin: '0 0 1.5rem',
           }}
         >
-          Design that feels like
-          <br />a world, not a template.
+          Good design should
+          <br />feel inevitable.
         </motion.h2>
 
         <motion.p
@@ -101,9 +101,9 @@ export default function IntroSection() {
             marginBottom: '3rem',
           }}
         >
-          We build web experiences that transcend the ordinary —
+          I craft interfaces that feel obvious in hindsight —
           <br />
-          immersive, cinematic, and unmistakably yours.
+          intuitive, considered, and quietly delightful.
         </motion.p>
 
         <motion.div

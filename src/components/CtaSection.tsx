@@ -34,7 +34,7 @@ export default function CtaSection() {
         }}
       >
         <motion.div custom={0} variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
-          <span className="section-badge">Begin</span>
+          <span className="section-badge">Let's work</span>
         </motion.div>
 
         <motion.h2
@@ -52,9 +52,9 @@ export default function CtaSection() {
             margin: '0 0 1.5rem',
           }}
         >
-          Your next website
+          Your next project
           <br />
-          starts here.
+          starts with a yes.
         </motion.h2>
 
         <motion.p
@@ -72,7 +72,7 @@ export default function CtaSection() {
             margin: '0 auto 2.5rem',
           }}
         >
-          Book a free strategy call and explore what AI-powered design can become.
+          Whether you have a brief, a vibe, or just a feeling that something could be better — I'm listening.
         </motion.p>
 
         <motion.div
@@ -102,7 +102,7 @@ export default function CtaSection() {
               cursor: 'pointer',
             }}
           >
-            Book a Call
+            Get in Touch
             <ArrowUpRight style={{ width: '1rem', height: '1rem' }} />
           </a>
           <a
@@ -125,7 +125,7 @@ export default function CtaSection() {
               cursor: 'pointer',
             }}
           >
-            View Pricing
+            See My Work
             <ChevronRight style={{ width: '1rem', height: '1rem' }} />
           </a>
         </motion.div>

@@ -32,7 +32,7 @@ export default function Footer() {
               margin: 0,
             }}
           >
-            © 2026 Aether Design. All rights reserved.
+            © 2026 Rico. All rights reserved. (Mostly.)
           </p>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>

@@ -109,7 +109,7 @@ export default function HeroSection() {
               fontWeight: 400,
             }}
           >
-            Introducing AI-powered web design.
+            ✦ Portfolio soft launch — be nice.
           </span>
         </motion.div>
 
@@ -134,8 +134,8 @@ export default function HeroSection() {
             lineHeight: 1.6,
           }}
         >
-          Stunning design. Blazing performance. Built by AI, refined by experts.{' '}
-          This is web design, wildly reimagined.
+          Aspiring UX designer. Certified menace to her very patient friends.{' '}
+          This is where the portfolio soft-launches and the chaos begins.
         </motion.p>
 
         {/* CTAs */}
@@ -165,7 +165,7 @@ export default function HeroSection() {
               cursor: 'pointer',
             }}
           >
-            Get Started
+            View My Work
             <ArrowUpRight style={{ width: '1rem', height: '1rem' }} />
           </a>
           <a
@@ -187,7 +187,7 @@ export default function HeroSection() {
               cursor: 'pointer',
             }}
           >
-            Watch the Film
+            About Me
             <Play style={{ width: '0.9rem', height: '0.9rem' }} />
           </a>
         </motion.div>
