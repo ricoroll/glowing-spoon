@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Mail, ArrowUpRight } from 'lucide-react';
-import CherryBlossomQR from './CherryBlossomQR';
+import CherryBlossomQR from './cherry-blossom-qr/CherryBlossomQR';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -176,33 +176,15 @@ export default function ContactSection() {
             gap: '1.25rem',
           }}
         >
-          {/* Canvas wrapper */}
+          {/* WebGPU cherry blossom QR */}
           <div
             style={{
-              position: 'relative',
-              width: '100%',
-              maxWidth: 380,
-              aspectRatio: '1',
-              borderRadius: '2rem',
-              overflow: 'hidden',
-              background: 'rgba(255,255,255,0.025)',
-              boxShadow:
-                'inset 0 1px 1px rgba(255,255,255,0.08), 0 0 60px rgba(255,183,197,0.06), 0 32px 80px rgba(0,0,0,0.5)',
-              border: '1px solid rgba(255,183,197,0.12)',
+              boxShadow: '0 0 60px rgba(255,183,197,0.08), 0 32px 80px rgba(0,0,0,0.5)',
+              borderRadius: '1.25rem',
+              border: '1px solid rgba(255,183,197,0.14)',
             }}
           >
-            {/* Inner pink glow */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background:
-                  'radial-gradient(ellipse 70% 70% at 50% 50%, rgba(255,183,197,0.04) 0%, transparent 70%)',
-                pointerEvents: 'none',
-                zIndex: 1,
-              }}
-            />
-            <CherryBlossomQR />
+            <CherryBlossomQR size={380} />
           </div>
 
           <p
