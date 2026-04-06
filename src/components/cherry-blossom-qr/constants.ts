@@ -1,4 +1,4 @@
-export const DEFAULT_QR_CONTENT = 'https://aether.design/contact';
+export const DEFAULT_QR_CONTENT = 'https://youtu.be/dQw4w9WgXcQ?si=GUxNqBw91KYUaJae';
 
 export const PALETTE = {
   skyZenith: { r: 0.82, g: 0.88, b: 0.92 },
