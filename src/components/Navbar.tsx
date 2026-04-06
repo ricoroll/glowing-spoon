@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
-const links = ['Services', 'Work', 'Process', 'Pricing'];
+const links = ['Services', 'Work', 'Process', 'Contact'];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);

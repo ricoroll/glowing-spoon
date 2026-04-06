@@ -5,6 +5,7 @@ import IntroSection from './components/IntroSection';
 import HowItWorksSection from './components/HowItWorksSection';
 import FeaturesSection from './components/FeaturesSection';
 import CtaSection from './components/CtaSection';
+import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <HowItWorksSection />
       <FeaturesSection />
       <CtaSection />
+      <ContactSection />
       <Footer />
     </>
   );
