@@ -237,6 +237,20 @@ fn main(input: BlockInput) -> @location(0) vec4f {
   let diffuse = albedo * (ambient + sunCol * NdSun * 0.65 + skyFill * NdUp * 0.25 + bounce * 0.2);
   var hdr = acesFilm(diffuse * 1.05);
   hdr = pow(hdr, vec3f(1.0 / 2.2));
+
+  // ── Scannable contrast on top face as progress → 1 (flat/2D view) ─────────
+  // Preserves artistic hues — just darkens dark modules and brightens light
+  // modules so phone scanners can reliably read the QR code.
+  if (input.faceNy > 0.5) {
+    if (blockType == 0) {
+      // Light modules: push toward bright white
+      hdr = mix(hdr, vec3f(0.97), progress * 0.85);
+    } else {
+      // Dark modules: preserve hue, crush brightness to ~20%
+      hdr = hdr * mix(1.0, 0.18, progress);
+    }
+  }
+
   return vec4f(hdr, 1.0);
 }
 `;
