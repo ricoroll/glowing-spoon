@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import CherryBlossomQR from './cherry-blossom-qr/CherryBlossomQR';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -17,17 +18,20 @@ const fadeUp = {
 
 export default function ContactSection() {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  const qrSize = isMobile ? Math.min(280, window.innerWidth - 80) : 340;
 
   return (
     <section
       id="contact"
       style={{
         background: 'black',
-        paddingRight: 0,           // card bleeds to right edge
+        paddingRight: isMobile ? 0 : 0,
         overflow: 'hidden',
         position: 'relative',
-        minHeight: '75vh',
+        minHeight: isMobile ? 'auto' : '75vh',
         display: 'flex',
         alignItems: 'stretch',
       }}
@@ -37,14 +41,14 @@ export default function ContactSection() {
         style={{
           width: '100%',
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
+          gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
           alignItems: 'stretch',
         }}
       >
-        {/* ── Left — text ─────────────────────────────────────── */}
+        {/* ── Text ───────────────────────────────────────────────── */}
         <div
           style={{
-            padding: '6rem 3rem 6rem 6rem',
+            padding: isMobile ? '4rem 1.5rem 2.5rem' : '6rem 3rem 6rem 6rem',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -61,7 +65,7 @@ export default function ContactSection() {
               fontStyle: 'italic',
               letterSpacing: '-0.03em',
               lineHeight: 1.0,
-              fontSize: 'clamp(2.8rem, 5vw, 5rem)',
+              fontSize: isMobile ? 'clamp(2.2rem, 10vw, 3.2rem)' : 'clamp(2.8rem, 5vw, 5rem)',
               color: 'white',
               margin: 0,
             }}
@@ -84,7 +88,7 @@ export default function ContactSection() {
               fontSize: '0.95rem',
               lineHeight: 1.7,
               margin: 0,
-              maxWidth: '22rem',
+              maxWidth: isMobile ? '100%' : '22rem',
             }}
           >
             Scan to say hi, collab, or just tell me what you think.
@@ -93,7 +97,7 @@ export default function ContactSection() {
           </motion.p>
         </div>
 
-        {/* ── Right — tall white card, flush to edge ───────────── */}
+        {/* ── White card with QR ──────────────────────────────────── */}
         <motion.div
           custom={2}
           variants={fadeUp}
@@ -104,11 +108,13 @@ export default function ContactSection() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '3rem 2rem',
-            borderRadius: '2rem 0 0 2rem',  // only round left corners
+            padding: isMobile ? '2.5rem 1.5rem 3rem' : '3rem 2rem',
+            // On desktop: only round left corners so it bleeds to the right edge
+            // On mobile: round top corners so it feels like a card below the text
+            borderRadius: isMobile ? '2rem 2rem 0 0' : '2rem 0 0 2rem',
           }}
         >
-          <CherryBlossomQR size={340} />
+          <CherryBlossomQR size={qrSize} />
         </motion.div>
       </div>
     </section>

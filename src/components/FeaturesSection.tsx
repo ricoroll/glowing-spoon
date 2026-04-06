@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Eye, Sparkles, Zap, Package } from 'lucide-react';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const cards = [
   {
@@ -44,6 +45,7 @@ const fadeUp = {
 
 export default function FeaturesSection() {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
@@ -51,8 +53,8 @@ export default function FeaturesSection() {
       id="services"
       style={{
         background: 'black',
-        paddingTop: '7rem',
-        paddingBottom: '9rem',
+        paddingTop: isMobile ? '4rem' : '7rem',
+        paddingBottom: isMobile ? '5rem' : '9rem',
         paddingLeft: '1.5rem',
         paddingRight: '1.5rem',
         overflow: 'hidden',

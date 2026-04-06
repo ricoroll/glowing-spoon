@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -12,6 +13,7 @@ const fadeUp = {
 
 export default function HowItWorksSection() {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
@@ -20,8 +22,8 @@ export default function HowItWorksSection() {
         style={{
           position: 'relative',
           overflow: 'hidden',
-          paddingTop: '10rem',
-          paddingBottom: '14rem',
+          paddingTop: isMobile ? '4rem' : '10rem',
+          paddingBottom: isMobile ? '6rem' : '14rem',
           paddingLeft: '1.5rem',
           paddingRight: '1.5rem',
         }}

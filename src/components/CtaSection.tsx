@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowUpRight, ChevronRight } from 'lucide-react';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -13,14 +14,15 @@ const fadeUp = {
 
 export default function CtaSection() {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
     <section
       style={{
         background: 'black',
-        paddingTop: '7rem',
-        paddingBottom: '10rem',
+        paddingTop: isMobile ? '4rem' : '7rem',
+        paddingBottom: isMobile ? '6rem' : '10rem',
         paddingLeft: '1.5rem',
         paddingRight: '1.5rem',
       }}

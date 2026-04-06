@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const links = ['Work', 'About', 'Process', 'Contact'];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -58,39 +60,34 @@ export default function Navbar() {
           </span>
         </div>
 
-        {/* Nav links */}
-        <nav
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1.75rem',
-            flexShrink: 0,
-          }}
-        >
-          {links.map((link) => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
-              style={{
-                fontSize: '0.875rem',
-                color: 'rgba(255,255,255,0.75)',
-                fontFamily: "'Barlow', sans-serif",
-                fontWeight: 400,
-                textDecoration: 'none',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'white')}
-              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'rgba(255,255,255,0.75)')}
-            >
-              {link}
-            </a>
-          ))}
-        </nav>
+        {/* Nav links — hidden on mobile */}
+        {!isMobile && (
+          <nav style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', flexShrink: 0 }}>
+            {links.map((link) => (
+              <a
+                key={link}
+                href={`#${link.toLowerCase()}`}
+                style={{
+                  fontSize: '0.875rem',
+                  color: 'rgba(255,255,255,0.75)',
+                  fontFamily: "'Barlow', sans-serif",
+                  fontWeight: 400,
+                  textDecoration: 'none',
+                  transition: 'color 0.2s',
+                }}
+                onMouseEnter={(e) => ((e.target as HTMLElement).style.color = 'white')}
+                onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'rgba(255,255,255,0.75)')}
+              >
+                {link}
+              </a>
+            ))}
+          </nav>
+        )}
 
         {/* CTA */}
-        <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+        <div style={{ flex: isMobile ? 'unset' : 1, display: 'flex', justifyContent: 'flex-end', marginLeft: 'auto' }}>
           <a
-            href="#"
+            href="#contact"
             style={{
               display: 'inline-flex',
               alignItems: 'center',

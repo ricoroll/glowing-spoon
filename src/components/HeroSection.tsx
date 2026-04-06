@@ -3,9 +3,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, Play } from 'lucide-react';
 import ParticleCanvas from './ParticleCanvas';
 import ParticleTitle from './ParticleTitle';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
@@ -59,7 +61,9 @@ export default function HeroSection() {
         style={{
           position: 'relative',
           zIndex: 10,
-          paddingTop: 110,
+          paddingTop: isMobile ? 90 : 110,
+          paddingLeft: isMobile ? '1rem' : 0,
+          paddingRight: isMobile ? '1rem' : 0,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -126,11 +130,11 @@ export default function HeroSection() {
           style={{
             fontFamily: "'Barlow', sans-serif",
             fontWeight: 300,
-            fontSize: '1rem',
+            fontSize: isMobile ? '0.9rem' : '1rem',
             color: 'rgba(255,255,255,0.65)',
             marginTop: '1.5rem',
             marginBottom: '2.5rem',
-            maxWidth: 520,
+            maxWidth: isMobile ? '90vw' : 520,
             lineHeight: 1.6,
           }}
         >
@@ -143,7 +147,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.8, ease: 'easeOut' }}
-          style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}
+          style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'center', gap: '0.75rem' }}
         >
           <a
             href="#"

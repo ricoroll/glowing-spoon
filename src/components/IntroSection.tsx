@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const partners = ['Figma', 'Framer', 'Notion', 'Maze', 'Miro', 'Lottie'];
 
@@ -14,14 +15,15 @@ const fadeUp = {
 
 export default function IntroSection() {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
     <section
       style={{
         background: 'black',
-        paddingTop: '7rem',
-        paddingBottom: '9rem',
+        paddingTop: isMobile ? '4rem' : '7rem',
+        paddingBottom: isMobile ? '5rem' : '9rem',
         paddingLeft: '1.5rem',
         paddingRight: '1.5rem',
         textAlign: 'center',
@@ -101,9 +103,7 @@ export default function IntroSection() {
             marginBottom: '3rem',
           }}
         >
-          I craft interfaces that feel obvious in hindsight —
-          <br />
-          intuitive, considered, and quietly delightful.
+          I craft interfaces that feel obvious in hindsight — intuitive, considered, and quietly delightful.
         </motion.p>
 
         <motion.div
