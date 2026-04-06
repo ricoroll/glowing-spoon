@@ -239,15 +239,17 @@ fn main(input: BlockInput) -> @location(0) vec4f {
   hdr = pow(hdr, vec3f(1.0 / 2.2));
 
   // ── Scannable contrast on top face as progress → 1 (flat/2D view) ─────────
-  // Preserves artistic hues — just darkens dark modules and brightens light
-  // modules so phone scanners can reliably read the QR code.
+  // Uses a per-channel power curve so dominant hue channels (pink R, green G)
+  // stay relatively vivid while luminance drops into scannable range.
+  // pow(x, 3.5): pink 0.83→0.52 R stays warm, 0.55→0.13 G drops → dark rose.
+  //              green 0.07→≈0 R drops, 0.70→0.29 G stays → dark forest green.
+  // Light modules pushed toward white for maximum contrast.
   if (input.faceNy > 0.5) {
     if (blockType == 0) {
-      // Light modules: push toward bright white
       hdr = mix(hdr, vec3f(0.97), progress * 0.85);
     } else {
-      // Dark modules: preserve hue, crush brightness to ~20%
-      hdr = hdr * mix(1.0, 0.18, progress);
+      let exponent = mix(1.0, 3.5, progress);
+      hdr = pow(max(hdr, vec3f(0.0)), vec3f(exponent));
     }
   }
 
