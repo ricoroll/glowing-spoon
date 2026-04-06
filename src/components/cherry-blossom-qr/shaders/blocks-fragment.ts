@@ -237,17 +237,6 @@ fn main(input: BlockInput) -> @location(0) vec4f {
   let diffuse = albedo * (ambient + sunCol * NdSun * 0.65 + skyFill * NdUp * 0.25 + bounce * 0.2);
   var hdr = acesFilm(diffuse * 1.05);
   hdr = pow(hdr, vec3f(1.0 / 2.2));
-
-  // ── High-contrast blend for QR scanning (top face only, as progress → 1) ──
-  // Lerps artistic colours toward near-black / near-white so phone scanners
-  // can reliably read the code in 2D flat view.
-  if (input.faceNy > 0.5) {
-    // isDark: 0.0 for Dirt (light module), 1.0 for all dark modules
-    let isDark     = select(0.0, 1.0, blockType != 0);
-    let scanTarget = mix(vec3f(0.96), vec3f(0.07), isDark);
-    hdr = mix(hdr, scanTarget, progress);
-  }
-
   return vec4f(hdr, 1.0);
 }
 `;
