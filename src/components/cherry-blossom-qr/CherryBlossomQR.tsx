@@ -10,8 +10,8 @@ interface Props {
 
 export default function CherryBlossomQR({ content = DEFAULT_QR_CONTENT, size = 380 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const isFlatRef = useRef(false);
-  const [isFlat, setIsFlat] = useState(false);
+  const isFlatRef = useRef(true);
+  const [isFlat, setIsFlat] = useState(true); // default: 2D (scannable)
   const [gpuUnavailable, setGpuUnavailable] = useState(false);
 
   // Sync the ref that the render-loop reads
@@ -25,9 +25,13 @@ export default function CherryBlossomQR({ content = DEFAULT_QR_CONTENT, size = 3
     isFlat:       isFlatRef,
   });
 
-  const toggle = () => {
+  const handleMouseEnter = () => {
     if (!navigator.gpu) { setGpuUnavailable(true); return; }
-    setIsFlat((v) => !v);
+    setIsFlat(false); // go 3D on hover
+  };
+
+  const handleMouseLeave = () => {
+    setIsFlat(true);  // return to flat/scannable on hover out
   };
 
   if (gpuUnavailable) {
@@ -58,17 +62,17 @@ export default function CherryBlossomQR({ content = DEFAULT_QR_CONTENT, size = 3
     <div style={{ position: 'relative', width: size, height: size }}>
       <canvas
         ref={canvasRef}
-        onClick={toggle}
-        title={isFlat ? 'Click to view in 3D' : 'Click to scan QR code'}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         style={{
           width:   size,
           height:  size,
           display: 'block',
-          cursor:  'pointer',
+          cursor:  'default',
           borderRadius: '1.25rem',
         }}
       />
-      {/* View toggle hint */}
+      {/* Hint */}
       <div
         style={{
           position:   'absolute',
@@ -86,9 +90,11 @@ export default function CherryBlossomQR({ content = DEFAULT_QR_CONTENT, size = 3
           pointerEvents: 'none',
           whiteSpace: 'nowrap',
           letterSpacing: '0.04em',
+          opacity:    isFlat ? 1 : 0,
+          transition: 'opacity 0.4s ease',
         }}
       >
-        {isFlat ? 'Tap to go 3D' : 'Tap to scan'}
+        Hover to view in 3D
       </div>
     </div>
   );
